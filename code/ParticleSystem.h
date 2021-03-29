@@ -15,9 +15,10 @@ public:
 	void DestroyOldParticles(float _maxAge);
 
 	int maxParticles;
+	glm::vec3* positions;
+	glm::vec3* velocities;
 
 private:
-	glm::vec3* positions;
 	float* age;
 
 	int currentParticles;

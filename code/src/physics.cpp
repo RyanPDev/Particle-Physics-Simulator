@@ -33,6 +33,7 @@ void GUI() {
 		ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);//FrameRate
 		ImGui::InputFloat("Emission rate", &emissionRate, 1.f);
 		ImGui::InputFloat("Max age", &maxAge);
+		ImGui::InputInt("Max Particles", &ps.maxParticles);
 	}
 
 	ImGui::End();
@@ -40,7 +41,7 @@ void GUI() {
 
 void PhysicsInit() {
 	renderParticles = true;
-	ps = ParticleSystem(1000);
+	ps = ParticleSystem(100);
 }
 
 void spawn()
