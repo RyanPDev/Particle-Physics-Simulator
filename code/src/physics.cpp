@@ -1,7 +1,10 @@
 #include <imgui\imgui.h>
 #include <imgui\imgui_impl_sdl_gl3.h>
-#include <glm/glm.hpp>
 #include "../ParticleSystem.h"
+#include "../Emitter.h"
+#include "../Euler.h"
+#include <glm/glm.hpp>
+
 
 //Exemple
 extern void Exemple_GUI();
@@ -18,10 +21,12 @@ bool show_test_window = false;
 
 
 ParticleSystem ps;
+Emitter emitter;
+Euler euler;
 //float initialAngle = 0.0f;
 float angle = 0.f;
 int nextParticleIdx = 0.f;
-
+float time = 0;
 float emissionRate = 1.f; // Particles/second
 float maxAge = 5.f; // Seconds
 
@@ -40,33 +45,25 @@ void GUI() {
 }
 
 void PhysicsInit() {
+
 	renderParticles = true;
 	ps = ParticleSystem(100);
+	emitter = Emitter(Emitter::Type::FOUNTAIN);
+	euler = Euler();
 }
 
-void spawn()
+
+void PhysicsUpdate(float dt) 
 {
-	float x = nextParticleIdx * cos(angle) / 20.f;
-	float y = nextParticleIdx / 10.f;
-	float z = nextParticleIdx * sin(angle) / 20.f;
-
-	angle += 0.1f;
-
-	ps.SpawnParticle(glm::vec3(x, y, z));
-
-	//nextParticleIdx++;
-	nextParticleIdx = (nextParticleIdx + 1) % ps.maxParticles;
-}
-
-void PhysicsUpdate(float dt) {
 	ps.DestroyOldParticles(maxAge);
-
-	//if (nextParticleIdx < ps.maxParticles)
+	time += dt;
+	if (time >= 1 / emissionRate)
 	{
-		spawn();
+		time = 0;
+		emitter.spawn(ps);
+		nextParticleIdx = (nextParticleIdx + 1) % ps.maxParticles;
 	}
-	//initialAngle += 0.1f;
-
+	euler.Update(ps,dt);
 	ps.UpdateLilSpheres();
 	ps.UpdateAge(dt);
 }

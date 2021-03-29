@@ -2,6 +2,10 @@
 #include "ParticleSystem.h"
 class Euler
 {
-	void Update(ParticleSystem ps, float dt);
+private:
+public:
+	glm::vec3 gravity = { 0,0,0 };
+	Euler();
+	void Update(ParticleSystem &ps, float dt);
 };
 

@@ -1,4 +1,4 @@
-#include "ParticleSystem.h"
+#include "..\ParticleSystem.h"
 #include <glm/gtx/string_cast.hpp>
 #include <iostream>
 
@@ -12,6 +12,7 @@ ParticleSystem::ParticleSystem(int _maxParticles) : maxParticles(_maxParticles),
 currentParticles(0)
 {
 	positions = new glm::vec3[maxParticles];
+	celerities = new glm::vec3[maxParticles];
 	age = new float[maxParticles];
 }
 
@@ -29,15 +30,15 @@ void ParticleSystem::UpdateLilSpheres()
 	LilSpheres::updateParticles(0, maxParticles, first_float);
 }
 
-void ParticleSystem::SpawnParticle(glm::vec3 position)
+void ParticleSystem::SpawnParticle(glm::vec3 position, glm::vec3 celerity)
 {
-	//std::cout << "New Particle at" << glm::to_string(position) << std::endl;
-
-	// Posicionar la partícula
-	UpdateParticle(currentParticles, position);
-	age[currentParticles] = 0.f;
-
-	currentParticles++;
+	
+		//UpdateParticle(currentParticles, position);
+		positions[currentParticles] = position;
+		celerities[currentParticles] = celerity;
+		age[currentParticles] = 0.f;
+		currentParticles++;
+	
 }
 
 void ParticleSystem::UpdateAge(float _dt)
@@ -60,7 +61,7 @@ void ShiftLeft(int count, T* arr, int positionsToShift)
 void ParticleSystem::DestroyOldParticles(float _maxAge)
 {
 	int positionsToShift = 0;
-	int currentAge = age[0];
+	float currentAge = age[0];
 	while (currentAge > _maxAge && positionsToShift <= currentParticles)
 	{
 		positionsToShift++;
@@ -68,6 +69,7 @@ void ParticleSystem::DestroyOldParticles(float _maxAge)
 	}
 
 	ShiftLeft(currentParticles, positions, positionsToShift);
+	ShiftLeft(currentParticles, celerities, positionsToShift);
 	ShiftLeft(currentParticles, age, positionsToShift);
 
 	currentParticles -= positionsToShift;
