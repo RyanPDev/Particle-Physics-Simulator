@@ -8,7 +8,7 @@ namespace LilSpheres {
 	extern void updateParticles(int startIdx, int count, float* array_data);
 }
 
-ParticleSystem::ParticleSystem(int _maxParticles) : maxParticles(_maxParticles), 
+ParticleSystem::ParticleSystem(int _maxParticles) : maxParticles(_maxParticles),
 currentParticles(0)
 {
 	positions = new glm::vec3[maxParticles];
@@ -32,13 +32,11 @@ void ParticleSystem::UpdateLilSpheres()
 
 void ParticleSystem::SpawnParticle(glm::vec3 position, glm::vec3 celerity)
 {
-	
-		//UpdateParticle(currentParticles, position);
-		positions[currentParticles] = position;
-		celerities[currentParticles] = celerity;
-		age[currentParticles] = 0.f;
-		currentParticles++;
-	
+	//UpdateParticle(currentParticles, position);
+	positions[currentParticles] = position;
+	celerities[currentParticles] = celerity;
+	age[currentParticles] = 0.f;
+	currentParticles++;
 }
 
 void ParticleSystem::UpdateAge(float _dt)

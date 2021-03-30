@@ -10,7 +10,7 @@ private:
 	
 public:
 	enum class Type {FOUNTAIN, CASCADE,COUNT};
-	glm::vec3 position;
+	glm::vec3 position, endCascadePos;
 	glm::vec3 direction;
 	float speed;
 	int angle;

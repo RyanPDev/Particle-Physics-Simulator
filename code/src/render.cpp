@@ -159,6 +159,8 @@ GLuint cubeVbo[2];
 GLuint cubeShaders[2];
 GLuint cubeProgram;
 
+float d[6] = {  };
+
 float cubeVerts[] = {
 	// -5,0,-5 -- 5, 10, 5
 	-5.f,  0.f, -5.f,
@@ -170,6 +172,16 @@ float cubeVerts[] = {
 	 5.f, 10.f,  5.f,
 	-5.f, 10.f,  5.f,
 };
+
+glm::vec3 norms[] = {
+	glm::vec3(0.f, -1.f,  0.f),
+	glm::vec3(0.f,  1.f,  0.f),
+	glm::vec3(-1.f,  0.f,  0.f),
+	glm::vec3(1.f,  0.f,  0.f),
+	glm::vec3(0.f,  0.f, -1.f),
+	glm::vec3(0.f,  0.f,  1.f)
+};
+
 GLubyte cubeIdx[] = {
 	1, 0, 2, 3, // Floor - TriangleStrip
 	0, 1, 5, 4, // Wall - Lines
