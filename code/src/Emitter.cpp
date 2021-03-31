@@ -1,7 +1,7 @@
 #include "..\Emitter.h"
 
-Emitter::Emitter(){}
-Emitter::Emitter(Type _type):type(_type)
+Emitter::Emitter() {}
+Emitter::Emitter(Type _type) :type(_type)
 {
 	type = Type::CASCADE;
 	position = glm::vec3(0, 1, 0);
@@ -10,21 +10,21 @@ Emitter::Emitter(Type _type):type(_type)
 	speed = 5;
 	angle = 30;
 }
-void Emitter::spawn(ParticleSystem &_ps)
+void Emitter::spawn(ParticleSystem& _ps)
 {
 	if (_ps.currentParticles < _ps.maxParticles)
 	{
-		_ps.SpawnParticle(CalcPos(),CalcDir(angle));
+		_ps.SpawnParticle(CalcPos(), CalcDir(angle));
 	}
 }
 glm::vec3 Emitter::CalcPos() {
-	switch(type)
+	switch (type)
 	{
 	case Type::FOUNTAIN:
 		break;
 	case Type::CASCADE:
 		float r = static_cast <float> (rand()) / static_cast <float> (RAND_MAX);
-		return position + (glm::vec3(endCascadePos - position)* r);
+		return position + (glm::vec3(endCascadePos - position) * r);
 		break;
 	}
 	return position;
@@ -34,7 +34,7 @@ glm::vec3 Emitter::CalcDir(int _angle) {
 
 	//return glm::normalize(glm::cos());
 	//glm::dot()
-	switch(type)
+	switch (type)
 	{
 	case Type::FOUNTAIN:
 		break;

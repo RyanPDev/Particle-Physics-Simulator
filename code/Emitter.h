@@ -7,9 +7,9 @@ static class Emitter
 private:
 	glm::vec3 CalcPos();
 	glm::vec3 CalcDir(int _angle);
-	
+
 public:
-	enum class Type {FOUNTAIN, CASCADE,COUNT};
+	enum class Type { FOUNTAIN, CASCADE, COUNT };
 	glm::vec3 position, endCascadePos;
 	glm::vec3 direction;
 	float speed;

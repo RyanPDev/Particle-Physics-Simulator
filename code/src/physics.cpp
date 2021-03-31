@@ -38,17 +38,17 @@ void GUI() {
 
 	ImGui::Text("Application average %.3f ms/frame (%.1f FPS)", 1000.0f / ImGui::GetIO().Framerate, ImGui::GetIO().Framerate);//FrameRate
 
-	ImGui::InputFloat("Emission rate", &emissionRate, 1.f);	
-	ImGui::DragFloat("Max age", &maxAge, 0.05f, 0.5f, 10.f);	
+	ImGui::InputFloat("Emission rate", &emissionRate, 1.f);
+	ImGui::DragFloat("Max age", &maxAge, 0.05f, 0.5f, 10.f);
 	ImGui::InputInt("Max Particles", &ps.maxParticles);
 	ImGui::DragFloat("Speed", &emitter.speed, 0.05f, 0.f, 20.f);
 
 	ImGui::DragFloat3("Direction", (float*)&emitter.direction, 0.05f, -1.f, 1.f);
-	switch(emitter.type)
+	switch (emitter.type)
 	{
 	case Emitter::Type::FOUNTAIN:
 		if (ImGui::Button("Cascade")) { emitter.type = Emitter::Type::CASCADE; }
-	
+
 
 		break;
 	case Emitter::Type::CASCADE:
