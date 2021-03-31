@@ -10,7 +10,7 @@ bool renderCloth = false;
 bool renderCube = false;
 
 namespace Sphere {
-	extern void setupSphere(glm::vec3 pos = glm::vec3(0.f, 5.f, 0.f), float radius = 1.f);
+	extern void setupSphere(glm::vec3 pos = glm::vec3(-4.f, 9.f, 3.f), float radius = 1.f);
 	extern void cleanupSphere();
 	extern void updateSphere(glm::vec3 pos, float radius = 1.f);
 	extern void drawSphere();
@@ -35,7 +35,6 @@ namespace ClothMesh {
 	extern void updateClothMesh(float* array_data);
 	extern void drawClothMesh();
 }
-
 namespace Cube {
 	extern void setupCube();
 	extern void cleanupCube();

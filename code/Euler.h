@@ -22,7 +22,7 @@ private:
 
 	struct SphereCollider
 	{
-		glm::vec3 c = { 0.f, 5.f, 0.f };
+		glm::vec3 c = { -4.f, 9.f, 3.f };
 		float r = 1.f;
 	}sphere;
 
@@ -37,6 +37,9 @@ private:
 	int CheckCollisionCapsule(glm::vec3, glm::vec3);
 	void ReboundPlane(glm::vec3&, glm::vec3&, glm::vec3, float);
 	float GetDistanceFromPlane(int, glm::vec3);
+	float GetDFromPlane(glm::vec3, glm::vec3);
+	glm::vec3 GetCollisionPoint(glm::vec3, glm::vec3);
+	glm::vec3 Euler::GetCollisionNorm(glm::vec3);
 public:
 	float reboundCoefficient = 1.f;
 	Euler();
