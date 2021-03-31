@@ -23,6 +23,11 @@ void Euler::Update(ParticleSystem& ps, float dt)
 			int collidedPlane = CheckCollisionBox(iPos, ps.positions[i]);
 			ReboundPlane(ps.positions[i], ps.celerities[i], box.norms[collidedPlane], box.d[collidedPlane]);
 		}
+
+		if (CheckCollisionSphere(ps.positions[i]))
+		{
+
+		}
 	}
 }
 
@@ -40,10 +45,20 @@ int Euler::CheckCollisionBox(glm::vec3 iPos, glm::vec3 pos)
 	return collidedPlane;
 }
 
+bool Euler::CheckCollisionSphere(glm::vec3 pos)
+{
+	return (glm::abs(glm::distance(sphere.c, pos)) - sphere.r <= 0);
+}
+
+int Euler::CheckCollisionCapsule(glm::vec3, glm::vec3)
+{
+	return 0;
+}
+
 float Euler::GetDistanceFromPlane(int plane, glm::vec3 pos)
 {
 	float distance = 0;
-	distance = (glm::abs((box.norms[plane].x * pos.x) +	(box.norms[plane].y * pos.y) + (box.norms[plane].z * pos.z) + box.d[plane])) /
+	distance = (glm::abs((box.norms[plane].x * pos.x) + (box.norms[plane].y * pos.y) + (box.norms[plane].z * pos.z) + box.d[plane])) /
 		(glm::sqrt(glm::pow(box.norms[plane].x, 2) + glm::pow(box.norms[plane].y, 2) + glm::pow(box.norms[plane].z, 2)));
 
 	return distance;

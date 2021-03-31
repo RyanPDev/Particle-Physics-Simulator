@@ -2,6 +2,8 @@
 #include "ParticleSystem.h"
 #include <glm/glm.hpp>
 #include <glm\gtc\matrix_transform.hpp>
+#include <random>
+
 static class Emitter
 {
 private:

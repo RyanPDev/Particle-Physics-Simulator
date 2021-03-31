@@ -30,7 +30,7 @@ float angle = 0.f;
 int nextParticleIdx = 0.f;
 float timer = 0;
 float emissionRate = 500.f; // Particles/second
-float maxAge = 5.f; // Seconds
+float maxAge = 0.5f; // Seconds
 
 void GUI() {
 	bool show = true;
@@ -67,6 +67,7 @@ void GUI() {
 void PhysicsInit() {
 	//srand(static_cast<unsigned>(time(nullptr)));
 	renderParticles = true;
+	renderSphere = true;
 	//renderSphere = true;
 	ps = ParticleSystem(1000);
 	emitter = Emitter(Emitter::Type::FOUNTAIN);

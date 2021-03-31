@@ -114,6 +114,7 @@ void GLrender() {
 
 	// render code
 	Box::drawCube();
+
 	Axis::drawAxis();
 
 	renderPrims();

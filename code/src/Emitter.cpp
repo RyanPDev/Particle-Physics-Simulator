@@ -1,12 +1,16 @@
 #include "..\Emitter.h"
 
+//std::random_device rd; // obtain a random number from hardware
+//std::mt19937 gen(rd()); // seed the generator
+//std::uniform_int_distribution<> distr(-1, 1); // define the range
+
 Emitter::Emitter() {}
 Emitter::Emitter(Type _type) :type(_type)
 {
 	type = Type::CASCADE;
 	position = glm::vec3(0, 1, 0);
-	endCascadePos = glm::vec3(4, 2, 4);
-	direction = glm::vec3(1, 1, 0);
+	endCascadePos = glm::vec3(2, 1, 2);
+	direction = glm::vec3(0, 1, 0);
 	speed = 5;
 	angle = 30;
 }
