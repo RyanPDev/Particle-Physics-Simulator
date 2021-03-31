@@ -20,9 +20,11 @@ namespace Axis {
 	void cleanupAxis();
 	void drawAxis();
 }
+
 extern void setupPrims();
 extern void renderPrims();
 extern void cleanupPrims();
+
 ////////////////
 
 namespace RenderVars {

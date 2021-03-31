@@ -10,13 +10,13 @@ bool renderCloth = false;
 bool renderCube = false;
 
 namespace Sphere {
-	extern void setupSphere(glm::vec3 pos = glm::vec3(-4.f, 9.f, 3.f), float radius = 1.f);
+	extern void setupSphere(glm::vec3 pos = glm::vec3(0.f, 4.f, 0.f), float radius = 1.f);
 	extern void cleanupSphere();
 	extern void updateSphere(glm::vec3 pos, float radius = 1.f);
 	extern void drawSphere();
 }
 namespace Capsule {
-	extern void setupCapsule(glm::vec3 posA = glm::vec3(-3.f, 2.f, -2.f), glm::vec3 posB = glm::vec3(-4.f, 2.f, 2.f), float radius = 1.f);
+	extern void setupCapsule(glm::vec3 posA = glm::vec3(-3.f, 2.f, 0.f), glm::vec3 posB = glm::vec3(-3.f, 2.f, 2.f), float radius = 1.f);
 	extern void cleanupCapsule();
 	extern void updateCapsule(glm::vec3 posA, glm::vec3 posB, float radius = 1.f);
 	extern void drawCapsule();
